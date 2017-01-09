@@ -1,0 +1,48 @@
+section.first-section{
+    background-image: url(https://flatiron.com/assets/home/section1-0cbba05a8ef1d1c1742c3049ed58d56a.jpg);
+    height:600px;
+    width:100%;
+    background-color: darkgray;
+}
+section.section-center{
+    text-align: center;
+}
+section.section-container{
+
+}
+section.blue-section{
+    min-height:100px;
+    background-color: #3f93d1;
+}
+section.green-section{
+    min-height:300px;
+    background-color: #52BFA2;
+}
+nav ul a, nav .brand-logo, #navigation{
+    color: #000;
+}
+footer.page-footer{
+    margin-top:0px;
+}
+
+/* INPUT COLORS */
+.input-field input:focus + label, .input-field textarea:focus + label {
+    color: #3f93d1 !important;
+}
+/* label underline focus color */
+.row .input-field input:focus, .row .input-field textarea:focus {
+    border-bottom: 1px solid #3f93d1 !important;
+    box-shadow: 0 1px 0 0 #3f93d1 !important
+}
+/* icon with the input*/
+.input-field .prefix.active{
+    color: #3f93d1 !important;
+}
+
+@media print {
+
+button{
+    display: none;
+}
+
+}

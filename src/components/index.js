@@ -28,7 +28,16 @@ let Index = React.createClass({
     render() {
             return(
                 <section id="index">
-                    <p id="toPrint">COUCOU</p>
+                    <section className="blue-section section-center  valign-wrapper">
+                        <Col l={6} m={8} s={12}  className="white-text container ">
+                            <h1>Générateur d'étiquettes</h1>
+                        </Col>
+                    </section>
+
+                    <section id="toPrint">
+
+                        COUCOU
+                    </section>
 
                     <Button waves='light' onClick={this.print}>button</Button>
 

@@ -15,6 +15,7 @@ let Index = React.createClass({
             firstName:"",
             lastName:"",
             dateOfBirth:"",
+            dateToday:"",
             number:1,
             ref:"123456 AAA"
         }
@@ -30,12 +31,12 @@ let Index = React.createClass({
     },
     handleFirstNameChange:function(event){
         let stick = this.state.sticker;
-        stick.firstName = event.target.value;
+        stick.firstName = event.target.value.toString().toUpperCase();
         this.setState({sticker: stick});
     },
     handleLastNameChange:function(event){
         let stick = this.state.sticker;
-        stick.lastName = event.target.value;
+        stick.lastName = event.target.value.toString().toUpperCase();
         this.setState({sticker: stick});
     },
     handleDateOfBirthChange:function(event){
@@ -80,15 +81,16 @@ let Index = React.createClass({
 
                 <section id="toPrint" className="center">
                     <div id="sticker">
+                        <div id="barcode" className="center">
                         <Barcode value={this.state.sticker.ref} />
-                        <br/>
-                        {this.state.sticker.firstName} {this.state.sticker.lastName}
-                        <br/>
-                        {this.state.sticker.dateOfBirth}
+                        </div>
+                        <p>{this.state.sticker.firstName} {this.state.sticker.lastName}</p>
+                        <p>B.N : {this.state.sticker.dateOfBirth}</p>
+                        <p>CAMC : {this.state.sticker.dateToday}</p>
                     </div>
                 </section>
                 <section id="actions" className="center">
-                    <Button waves='light' className={"blue"} onClick={this.print}>button</Button>
+                    <Button waves='light' className={"blue"} onClick={this.print}>PRINT</Button>
                 </section>
 
             </section>

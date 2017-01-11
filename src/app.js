@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom'
 import { IndexRoute,Router, Route,hashHistory} from 'react-router';
-import { Navbar, NavItem , Footer} from 'react-materialize';
 
 /**
  * Component imports
@@ -16,7 +15,6 @@ const App = React.createClass({
         return (
             <section id="app">
                 {this.props.children}
-
             </section>
         )
     }

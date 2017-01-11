@@ -39,6 +39,10 @@ footer.page-footer{
     color: #3f93d1 !important;
 }
 
+#actions {
+    padding-top: 20px;
+}
+
 
 @media print {
 

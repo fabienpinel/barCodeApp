@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, Row, Col, Input, Icon } from 'react-materialize';
+var Barcode = require('react-barcode');
 
 
 /**
@@ -7,13 +8,15 @@ import { Button, Form, Row, Col, Input, Icon } from 'react-materialize';
  */
 let Index = React.createClass({
 
+    //ref = 6 chiffres et 3 lettres
     getInitialState: function() {
         return this.state = {sticker:
         {
             firstName:"",
             lastName:"",
             dateOfBirth:"",
-            number:0
+            number:1,
+            ref:"123456 AAA"
         }
         };
     },
@@ -45,6 +48,11 @@ let Index = React.createClass({
         stick.number = event.target.value;
         this.setState({sticker: stick});
     },
+    handleRefChange:function(event){
+        let stick = this.state.sticker;
+        stick.ref = event.target.value;
+        this.setState({sticker: stick});
+    },
     render: function() {
         var sticker = this.state.sticker;
         return(
@@ -62,6 +70,7 @@ let Index = React.createClass({
                                 <Input type="text" s={12} label="First Name" value={sticker.firstName} onChange={this.handleFirstNameChange} validate><Icon>account_circle</Icon></Input>
                                 <Input type="text" s={12} label="Last Name"  value={sticker.lastName} onChange={this.handleLastNameChange} validate><Icon>account_circle</Icon></Input>
                                 <Input type="date" s={12} label="Pick a date" value={sticker.dateOfBirth} onChange={this.handleDateOfBirthChange} className={"datepicker"} validate><Icon>perm_contact_calendar</Icon></Input>
+                                <Input type="text" s={12} label="ref"  value={sticker.ref} onChange={this.handleRefChange} validate><Icon>account_circle</Icon></Input>
                                 <Input type="number" s={12} label="Number of stickers to print"  value={sticker.number} onChange={this.handleNumberChange}><Icon>account_circle</Icon></Input>
                             </form>
 
@@ -71,12 +80,16 @@ let Index = React.createClass({
 
                 <section id="toPrint" className="center">
                     <div id="sticker">
+                        <Barcode value={this.state.sticker.ref} />
+                        <br/>
                         {this.state.sticker.firstName} {this.state.sticker.lastName}
                         <br/>
                         {this.state.sticker.dateOfBirth}
                     </div>
                 </section>
-                <Button waves='light' className={"blue"} onClick={this.print}>button</Button>
+                <section id="actions" className="center">
+                    <Button waves='light' className={"blue"} onClick={this.print}>button</Button>
+                </section>
 
             </section>
 

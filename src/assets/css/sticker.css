@@ -1,8 +1,10 @@
 #sticker{
     display: inline-block;
+    text-align: center;
     border: 1px black solid;
-    width: 300px;
-    height:220px;
-    text-align: left;
-    padding:5px 5px 5px 5px;
+    width: 5cm;
+    height:140px;
+}
+#toPrint{
+    text-align: center;
 }

@@ -7,8 +7,6 @@ var Barcode = require('react-barcode');
  * Index page
  */
 let Index = React.createClass({
-
-    //ref = 6 chiffres et 3 lettres
     getInitialState: function() {
         let date = new Date();
         let dateString = this.getStringFromDate(date);
@@ -20,8 +18,8 @@ let Index = React.createClass({
             dateOfBirth:"",
             dateOfBirthString:"",
             dateToday:dateString,
-            number:1,
-            ref:"123456 AAA"
+            refNumber:"123456",
+            refLetter:"EXT"
         }
         };
     },
@@ -35,10 +33,10 @@ let Index = React.createClass({
         return (""+day+"/"+month+"/"+year);
     },
     print: function(){
-        var divToPrint=document.getElementById('toPrint');
-        var newWin=window.open('','Print-Window');
+        let divToPrint=document.getElementById('toPrint');
+        let newWin=window.open('','Print-Window');
         newWin.document.open();
-        newWin.document.write('<html><link type="text/css" rel="stylesheet" href="src/assets/css/sticker.css" /><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+        newWin.document.write('<html><link type="text/css" rel="stylesheet" href="src/assets/css/reset.css" /><link type="text/css" rel="stylesheet" href="src/assets/css/index.css" /><link type="text/css" rel="stylesheet" href="src/assets/css/sticker.css" /><link type="text/css" rel="stylesheet" href="src/assets/css/print.css" /><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
         newWin.document.close();
         setTimeout(function(){newWin.close();},10);
     },
@@ -53,59 +51,63 @@ let Index = React.createClass({
         this.setState({sticker: stick});
     },
     handleDateOfBirthChange:function(event){
-        console.log(event.target.value);
         let date = new Date(event.target.value);
         let stick = this.state.sticker;
         stick.dateOfBirthString = this.getStringFromDate(date);
         this.setState({sticker: stick});
     },
-    handleNumberChange:function(event){
+    handleRefNumberChange:function(event){
         let stick = this.state.sticker;
-        stick.number = event.target.value;
+        stick.refNumber = event.target.value;
         this.setState({sticker: stick});
     },
-    handleRefChange:function(event){
+    handleRefLetterChange:function(event){
         let stick = this.state.sticker;
-        stick.ref = event.target.value;
+        stick.refLetter = event.target.value;
         this.setState({sticker: stick});
     },
     render: function() {
         var sticker = this.state.sticker;
         return(
             <section id="index">
-                <section className="blue-section section-center  valign-wrapper">
-                    <Col l={6} m={8} s={12}  className="white-text container ">
+                <section className="blue-section section-center valign-wrapper">
+                    <a href="/#" ><img id="logo" className="left-align" src="src/assets/img/logo2PETIT.jpg" /></a>
+                    <Row className="white-text container valign">
+                        <Col s={12} >
                         <h1>Générateur d'étiquettes</h1>
                     </Col>
+                    </Row>
                 </section>
 
                 <section>
                     <Row>
-                        <Col l={4} m={6} s={10} offset="s1 m3 l4">
+                        <Col l={4} m={10} s={12} offset="m1 l4">
                             <form>
-                                <Input type="text" s={12} label="First Name" value={sticker.firstName} onChange={this.handleFirstNameChange} validate><Icon>account_circle</Icon></Input>
-                                <Input type="text" s={12} label="Last Name"  value={sticker.lastName} onChange={this.handleLastNameChange} validate><Icon>account_circle</Icon></Input>
-                                <Input type="date" s={12}  onChange={this.handleDateOfBirthChange} validate><Icon>perm_contact_calendar</Icon></Input>
-                                <Input type="text" s={12} label="Reference"  value={sticker.ref} onChange={this.handleRefChange} validate><Icon>account_circle</Icon></Input>
-                                <Input type="number" s={12} label="Number of stickers to print"  value={sticker.number} onChange={this.handleNumberChange}><Icon>account_circle</Icon></Input>
+                                <Input type="text" s={12} label="Prénom" value={sticker.firstName} onChange={this.handleFirstNameChange} validate><Icon>account_circle</Icon></Input>
+                                <Input type="text" s={12} label="Nom"  value={sticker.lastName} onChange={this.handleLastNameChange} validate><Icon>account_circle</Icon></Input>
+                                <Col s={10} m={11}  offset="s2 m1" className={"dn-nomargin"}><label>Date de naissance</label></Col>
+                                <Input  type="date" s={12}  onChange={this.handleDateOfBirthChange} validate><Icon>perm_contact_calendar</Icon></Input>
+                                <Input type="text" s={8} label="Référence"  value={sticker.refNumber} onChange={this.handleRefNumberChange} validate><Icon>description</Icon></Input>
+                                <Input type="text" s={4}  value={sticker.refLetter} onChange={this.handleRefLetterChange} validate></Input>
                             </form>
 
                         </Col>
                     </Row>
                 </section>
 
-                <section id="toPrint" className="center">
+                <section id="toPrint">
                     <div id="sticker">
-                        <div id="barcode" className="center">
-                        <Barcode value={this.state.sticker.ref} />
-                        </div>
                         <p><strong>{this.state.sticker.firstName} {this.state.sticker.lastName}</strong></p>
-                        <p>B.N : {this.state.sticker.dateOfBirthString}</p>
+                        <p>D.N : {this.state.sticker.dateOfBirthString}</p>
+                        <div id="barcode" className="center">
+                            <Barcode value={this.state.sticker.refNumber} displayValue={false} showText={"hide"} margin={0} height={35} textMargin={2}/>
+                            <p ><strong>{this.state.sticker.refNumber} - {this.state.sticker.refLetter}</strong></p>
+                        </div>
                         <p>CAMC : {this.state.sticker.dateToday}</p>
                     </div>
                 </section>
                 <section id="actions" className="center">
-                    <Button waves='light' className={"blue"} onClick={this.print}>PRINT</Button>
+                    <Button waves='light' className={"blue"} onClick={this.print}>IMPRIMER</Button>
                 </section>
 
             </section>

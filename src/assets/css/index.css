@@ -12,7 +12,9 @@ section.section-container{
 }
 section.blue-section{
     min-height:100px;
+    margin-bottom: 20px;
     background-color: #3f93d1;
+    width:100%;
 }
 section.green-section{
     min-height:300px;
@@ -39,15 +41,23 @@ footer.page-footer{
     color: #3f93d1 !important;
 }
 
+
 #actions {
     padding-top: 20px;
 }
 
-
-@media print {
-
-button{
-    display: none;
+strong{
+    font-weight: bold;
+}
+.dn-nomargin{
+    margin-bottom:-15px;
+}
+#logo{
+    margin-left: 15px;
 }
 
+@media (max-width: 780px) {
+    h1 {
+        font-size: 40px;
+    }
 }

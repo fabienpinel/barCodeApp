@@ -56,8 +56,11 @@ strong{
     margin-left: 15px;
 }
 
-@media (max-width: 780px) {
+@media (max-width: 800px) {
     h1 {
-        font-size: 40px;
+        font-size: 35px;
+    }
+    #logo{
+        max-width:100px;
     }
 }

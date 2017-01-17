@@ -38,7 +38,7 @@ let Index = React.createClass({
         newWin.document.open();
         newWin.document.write('<html><link type="text/css" rel="stylesheet" href="src/assets/css/reset.css" /><link type="text/css" rel="stylesheet" href="src/assets/css/index.css" /><link type="text/css" rel="stylesheet" href="src/assets/css/sticker.css" /><link type="text/css" rel="stylesheet" href="src/assets/css/print.css" /><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
         newWin.document.close();
-        setTimeout(function(){newWin.close();},10);
+        setTimeout(function(){newWin.close();},60);
     },
     handleFirstNameChange:function(event){
         let stick = this.state.sticker;

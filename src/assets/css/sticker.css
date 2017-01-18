@@ -12,3 +12,5 @@
 .names{
     font-size: 14px;
 }
+
+@page { size: auto;  margin: 0mm; }

@@ -4,7 +4,11 @@
     border: 1px black solid;
     width: 5cm;
     height:140px;
+    font-size: 12px;
 }
 #toPrint{
     text-align: center;
+}
+.names{
+    font-size: 14px;
 }

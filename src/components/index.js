@@ -83,8 +83,8 @@ let Index = React.createClass({
                     <Row>
                         <Col l={4} m={10} s={12} offset="m1 l4">
                             <form>
-                                <Input type="text" s={12} label="Prénom" value={sticker.firstName} onChange={this.handleFirstNameChange} validate><Icon>account_circle</Icon></Input>
                                 <Input type="text" s={12} label="Nom"  value={sticker.lastName} onChange={this.handleLastNameChange} validate><Icon>account_circle</Icon></Input>
+                                <Input type="text" s={12} label="Prénom" value={sticker.firstName} onChange={this.handleFirstNameChange} validate><Icon>account_circle</Icon></Input>
                                 <Col s={10} m={11}  offset="s2 m1" className={"dn-nomargin"}><label>Date de naissance</label></Col>
                                 <Input  type="date" s={12}  onChange={this.handleDateOfBirthChange} validate><Icon>perm_contact_calendar</Icon></Input>
                                 <Input type="text" s={8} label="Référence"  value={sticker.refNumber} onChange={this.handleRefNumberChange} validate><Icon>description</Icon></Input>
@@ -97,7 +97,7 @@ let Index = React.createClass({
 
                 <section id="toPrint">
                     <div id="sticker">
-                        <p><strong>{this.state.sticker.firstName} {this.state.sticker.lastName}</strong></p>
+                        <p className="names"><strong>{this.state.sticker.lastName} {this.state.sticker.firstName}</strong></p>
                         <p>D.N : {this.state.sticker.dateOfBirthString}</p>
                         <div id="barcode" className="center">
                             <Barcode value={this.state.sticker.refNumber} displayValue={false} showText={"hide"} margin={0} height={35} textMargin={2}/>

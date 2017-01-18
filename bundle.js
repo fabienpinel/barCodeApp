@@ -26495,7 +26495,7 @@
 	        newWin.document.close();
 	        setTimeout(function () {
 	            newWin.close();
-	        }, 10);
+	        }, 60);
 	    },
 	    handleFirstNameChange: function handleFirstNameChange(event) {
 	        var stick = this.state.sticker;

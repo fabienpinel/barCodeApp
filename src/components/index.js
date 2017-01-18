@@ -103,7 +103,7 @@ let Index = React.createClass({
                             <Barcode value={this.state.sticker.refNumber} displayValue={false} showText={"hide"} margin={0} height={35} textMargin={2}/>
                             <p ><strong>{this.state.sticker.refNumber} - {this.state.sticker.refLetter}</strong></p>
                         </div>
-                        <p>CAMC : {this.state.sticker.dateToday}</p>
+                        <div className="align-bottom"><p>CAMC : {this.state.sticker.dateToday}</p></div>
                     </div>
                 </section>
                 <section id="actions" className="center">

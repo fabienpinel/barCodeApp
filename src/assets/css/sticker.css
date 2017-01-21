@@ -12,6 +12,7 @@
 }
 .names{
     font-size: 14px;
+    overflow-wrap: break-word;
 }
 .align-bottom{
     position: absolute;
@@ -23,4 +24,9 @@
 @page {
     size: auto;
     margin: 0mm;
+}
+@media print{
+    #sticker{
+        border: none;
+    }
 }

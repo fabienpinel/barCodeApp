@@ -26479,17 +26479,26 @@
 	        };
 	    },
 	    getStringFromDate: function getStringFromDate(date) {
+	        //day
 	        var day = date.getDate();
+	        if (day < 10) {
+	            day = "0" + day;
+	        }
+	        //month
 	        var month = date.getMonth() + 1;
 	        if (month < 10) {
 	            month = "0" + month;
 	        }
+	        //year
 	        var year = date.getFullYear();
+	        if (year < 100) {
+	            year = "19" + year;
+	        }
 	        return "" + day + "/" + month + "/" + year;
 	    },
 	    print: function print() {
 	        var divToPrint = document.getElementById('toPrint');
-	        var newWin = window.open('', 'Print-Window');
+	        var newWin = window.open('print', 'Print-Window');
 	        newWin.document.open();
 	        newWin.document.write('<html><link type="text/css" rel="stylesheet" href="src/assets/css/reset.css" /><link type="text/css" rel="stylesheet" href="src/assets/css/index.css" /><link type="text/css" rel="stylesheet" href="src/assets/css/sticker.css" /><link type="text/css" rel="stylesheet" href="src/assets/css/print.css" /><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
 	        newWin.document.close();
@@ -26564,7 +26573,7 @@
 	                            null,
 	                            _react2.default.createElement(
 	                                _reactMaterialize.Input,
-	                                { type: 'text', s: 12, label: 'Pr\xE9nom', value: sticker.firstName, onChange: this.handleFirstNameChange, validate: true },
+	                                { type: 'text', s: 12, label: 'Nom', value: sticker.lastName, onChange: this.handleLastNameChange, validate: true },
 	                                _react2.default.createElement(
 	                                    _reactMaterialize.Icon,
 	                                    null,
@@ -26573,7 +26582,7 @@
 	                            ),
 	                            _react2.default.createElement(
 	                                _reactMaterialize.Input,
-	                                { type: 'text', s: 12, label: 'Nom', value: sticker.lastName, onChange: this.handleLastNameChange, validate: true },
+	                                { type: 'text', s: 12, label: 'Pr\xE9nom', value: sticker.firstName, onChange: this.handleFirstNameChange, validate: true },
 	                                _react2.default.createElement(
 	                                    _reactMaterialize.Icon,
 	                                    null,
@@ -26620,13 +26629,13 @@
 	                    { id: 'sticker' },
 	                    _react2.default.createElement(
 	                        'p',
-	                        null,
+	                        { className: 'names' },
 	                        _react2.default.createElement(
 	                            'strong',
 	                            null,
-	                            this.state.sticker.firstName,
+	                            this.state.sticker.lastName,
 	                            ' ',
-	                            this.state.sticker.lastName
+	                            this.state.sticker.firstName
 	                        )
 	                    ),
 	                    _react2.default.createElement(
@@ -26652,10 +26661,14 @@
 	                        )
 	                    ),
 	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        'CAMC : ',
-	                        this.state.sticker.dateToday
+	                        'div',
+	                        { className: 'align-bottom' },
+	                        _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            'CAMC : ',
+	                            this.state.sticker.dateToday
+	                        )
 	                    )
 	                )
 	            ),

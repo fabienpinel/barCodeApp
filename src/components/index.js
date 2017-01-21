@@ -24,17 +24,26 @@ let Index = React.createClass({
         };
     },
     getStringFromDate: function(date){
+        //day
         let day = date.getDate();
+        if(day < 10){
+            day="0"+day;
+        }
+        //month
         let month = (date.getMonth())+1;
         if(month < 10){
             month="0"+month;
         }
+        //year
         let year = date.getFullYear();
+        if(year < 100){
+            year="19"+year;
+        }
         return (""+day+"/"+month+"/"+year);
     },
     print: function(){
         let divToPrint=document.getElementById('toPrint');
-        let newWin=window.open('','Print-Window');
+        let newWin=window.open('print','Print-Window');
         newWin.document.open();
         newWin.document.write('<html><link type="text/css" rel="stylesheet" href="src/assets/css/reset.css" /><link type="text/css" rel="stylesheet" href="src/assets/css/index.css" /><link type="text/css" rel="stylesheet" href="src/assets/css/sticker.css" /><link type="text/css" rel="stylesheet" href="src/assets/css/print.css" /><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
         newWin.document.close();
@@ -100,9 +109,9 @@ let Index = React.createClass({
                         <p className="names"><strong>{this.state.sticker.lastName} {this.state.sticker.firstName}</strong></p>
                         <p>D.N : {this.state.sticker.dateOfBirthString}</p>
                         <div id="barcode" className="center">
-                            <Barcode value={this.state.sticker.refNumber} displayValue={false} showText={"hide"} margin={0} height={35} textMargin={2}/>
+                            <Barcode value={this.state.sticker.refNumber} displayValue={false} showText={"hide"} margin={0} height={35} textMargin={2} />
                             <p ><strong>{this.state.sticker.refNumber} - {this.state.sticker.refLetter}</strong></p>
-                        </div>
+                                </div>
                         <div className="align-bottom"><p>CAMC : {this.state.sticker.dateToday}</p></div>
                     </div>
                 </section>

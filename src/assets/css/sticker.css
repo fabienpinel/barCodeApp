@@ -6,6 +6,7 @@
     width: 5cm;
     height:140px;
     font-size: 12px;
+    padding: 2px;
 }
 #toPrint{
     text-align: center;
